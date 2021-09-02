@@ -27,7 +27,7 @@ suspend fun searchMarket(row :String)= placeService.getMarket("Bearer "+SunAppli
             override fun onResponse(call: Call<T>, response: Response<T>) {
             val body=response.body()
                 if (body!=null) it.resume(body)
-                else it.resumeWithException(RuntimeException("body is null"))
+                else it.resumeWithException(RuntimeException("response  is null"))
             }
         })
     }

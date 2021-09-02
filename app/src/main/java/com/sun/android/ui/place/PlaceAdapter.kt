@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sun.android.R
 import com.sun.android.logic.model.Lnvitation
 import com.sun.android.logic.model.MarketList
+import com.sun.android.logic.model.Place
 import kotlinx.android.synthetic.main.invitation_item.view.*
 
 class PlaceAdapter(private val fragment: Fragment,
-                   private val placeList:List<MarketList>) :
+                   private val placeList:List<Place>) :
                     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(
@@ -23,8 +24,8 @@ class PlaceAdapter(private val fragment: Fragment,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val place=placeList[position]
-        holder.placeName.text=place.id
-        holder.placeAddress.text=place.name
+        holder.placeName.text=place.name
+        holder.placeAddress.text=place.address
     }
 
 

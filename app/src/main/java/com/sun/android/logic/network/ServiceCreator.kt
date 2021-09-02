@@ -8,7 +8,7 @@ object ServiceCreator {
     private const val BASE_URL="https://api.caiyunapp.com/"
     private const val TESTBASE_URL="http://39.107.93.58/"
     private val retrofit=Retrofit.Builder()
-        .baseUrl(TESTBASE_URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     fun <T> create(serviceClass :Class<T>):T= retrofit.create(serviceClass)

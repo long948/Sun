@@ -19,12 +19,25 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        singningConfig singningConfig.config
         }
     }
     signingConfigs {
         debug {
             v2SigningEnabled false
         }
+//                debugConfig {
+//            keyAlias "restaurant"
+//            keyPassword "restaurant123"
+//            storeFile file("restaurant.jks")
+//            storePassword "restaurant123"
+//        }
+//        releaseConfig {
+//            keyAlias "restaurant"
+//            keyPassword "restaurant123"
+//            storeFile file("restaurant.jks")
+//            storePassword "restaurant123"
+//        }
     }
 }
 

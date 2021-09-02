@@ -19,7 +19,7 @@ import com.sun.android.R
 import kotlinx.android.synthetic.main.fragment_lnvitation.*
 
 class PlaceFragment :Fragment() {
-    private val viewModel by lazy { ViewModelProvider(this).get(MarketViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProvider(this).get(PlaceViewModel::class.java) }
     private lateinit var adapter: PlaceAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,26 +34,26 @@ class PlaceFragment :Fragment() {
         super.onActivityCreated(savedInstanceState)
         val layoutManager=LinearLayoutManager(activity)
         recyclerView.layoutManager=layoutManager
-        adapter= PlaceAdapter(this,viewModel.marketList)
+        adapter= PlaceAdapter(this,viewModel.placeList)
         recyclerView.adapter=adapter
         searchPlaceEdit.addTextChangedListener {
             val content=it.toString()
             if (content.isNotEmpty()){
-                viewModel.searchMarket(content)
+                viewModel.searchPlaces(content)
             }else{
                 recyclerView.visibility=View.GONE
                 bgImageView.visibility=View.VISIBLE
-                viewModel.marketList.clear()
+                viewModel.placeList.clear()
                 adapter.notifyDataSetChanged()
             }
         }
-        viewModel.marketLiveData.observe(this, Observer {
+        viewModel.placeLiveData.observe(this, Observer {
             val market=it.getOrNull()
             if (market!=null){
                 recyclerView.visibility=View.VISIBLE
                 bgImageView.visibility=View.GONE
-                viewModel.marketList.clear()
-                viewModel.marketList.addAll(market)
+                viewModel.placeList.clear()
+                viewModel.placeList.addAll(market)
                 adapter.notifyDataSetChanged()
             }else{
                 Toast.makeText(activity, "未能查询到任何地点", Toast.LENGTH_SHORT).show()
