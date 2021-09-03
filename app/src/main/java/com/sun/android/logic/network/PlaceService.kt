@@ -1,9 +1,7 @@
 package com.sun.android.logic.network
 
 
-import com.sun.android.logic.model.LnvitationListResponse
-import com.sun.android.logic.model.MarketResponse
-import com.sun.android.logic.model.PlaceResponse
+import com.sun.android.logic.model.*
 import com.sun.android.ui.SunApplication
 import retrofit2.Call
 import retrofit2.http.*
@@ -23,4 +21,12 @@ interface PlaceService{
         @Header("Authorization") token: String?,
         @Query("row") row: String ):Call<MarketResponse>
 
+    @GET("v2.5/${SunApplication.TOKEN}/{lng},{lat}/realtime.json")
+    fun getRealtimeWeather(@Path("lng") lng: String, @Path("lat") lat: String):
+            Call<RealtimeResponse>
+
+
+    @GET("v2.5/${SunApplication.TOKEN}/{lng},{lat}/daily.json")
+    fun getDailyWeather(@Path("lng") lng: String, @Path("lat") lat: String):
+            Call<DailyResponse>
 }

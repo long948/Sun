@@ -17,6 +17,10 @@ object SunnyWeatherNetwork{
 suspend fun searchPlaces(query:String)= placeService.searchPlaces(query).await()
 suspend fun Lnvitation(header: String)= placeService.getList(header).await()
 suspend fun searchMarket(row :String)= placeService.getMarket("Bearer "+SunApplication.TOKEN,row).await()
+    suspend fun getDailyWeather(lng :String,lat :String)=
+        placeService.getDailyWeather(lng,lat).await()
+    suspend fun getRealtimeWeather(lng: String,lat: String)=
+        placeService.getRealtimeWeather(lng,lat).await()
     private suspend fun <T> Call<T>.await():T{
     return suspendCoroutine {
         enqueue(object :Callback<T>{

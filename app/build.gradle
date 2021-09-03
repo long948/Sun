@@ -24,7 +24,7 @@ android {
     }
     signingConfigs {
         debug {
-            v2SigningEnabled false
+//            v2SigningEnabled false
         }
 //                debugConfig {
 //            keyAlias "restaurant"
